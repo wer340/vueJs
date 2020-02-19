@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body style="text-align: center; margin-top: 150px; background: rgba(10,33,25,.01); " >
+    <div id="app" >
+<button v-on:click="counter++">counter +</button>
+<button v-on:click="counter--">counter -</button>
+<button v-on:click="secondCounter++">second counter +</button>
+
+<p>counter:{{counter}} and secondCounter: {{secondCounter}}</p>
+<p>{{output}}</p>
+<p></p>
+<p>computed a function only one time for refresh  browser , and click not excute func other time</p>
+  <h2>computed Asyncron token(change property impact to func cumputed) and execute not define dipendcy in func cumputed run one time</h1>
+<h2>Asyncron  change property run a func that can continue no dipendcy every moment to property just start excute needed to token</h1>
+</div>
+
+    <script>
+        new Vue ({
+            el:'#app',
+            data:{
+                counter:0,
+                secondCounter:0,
+
+            },
+            computed:{
+                
+                output:function(){
+                    var vm=this;
+                      setTimeout(function(){
+                            vm.counter =0;
+                      },2000)
+                    }    
+            },
+                                  
+           
+            watch:{
+                counter:function(value){
+                    var vm=this;
+                      setTimeout(function(){
+                            vm.counter +=10;
+                      },2000)
+                    }       
+            },
+                methods:{
+
+                    result : function(){
+                        console.log('method');
+                        
+                                return this.counter > 5 ? 'lager than five':'less than five';
+                    }                    
+
+
+
+
+
+                }
+        })
+    </script>
+</body>
+</html>

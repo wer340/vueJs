@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body style="text-align: center; margin-top: 150px; background: rgba(10,33,25,.01); " >
+    <div id="app" >
+
+
+<p><input v-on:keyup="alertShow" type="text"></p>
+<p>sense key enter<input v-on:keyup.enter="alertShow" type="text">chain modifier with execute by special key other a property the modifier</p>
+
+<h1>v-model directive</h1>
+<input  v-model="name" type="text">
+<h3>{{name}}</h3>
+    </div>
+
+    <script>
+        new Vue ({
+            el:'#app',
+            data:{
+                name:'johan',
+
+            },
+                methods:{
+                    alertShow:function(){
+                        alert('this is a dummy text');
+                    }
+
+                }
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body style="text-align: center; margin-top: 150px; background: rgba(10,33,25,.01); " >
+    <div id="app" >
+<button v-on:click="counter++">counter +</button>
+<button v-on:click="counter--">counter -</button>
+<button v-on:click="secondCounter++">second counter +</button>
+
+<p>counter:{{counter}} and secondCounter: {{secondCounter}}</p>
+<p>{{output}}</p>
+<p></p>
+
+    </div>
+
+    <script>
+        new Vue ({
+            el:'#app',
+            data:{
+                counter:0,
+                secondCounter:0,
+
+            },
+            computed:{
+                output:function(){
+                        console.log('computed');
+                        
+                                return this.counter > 5 ? 'lager than five':'less than five';
+                    }                    
+
+            },
+                methods:{
+
+                    result : function(){
+                        console.log('method');
+                        
+                                return this.counter > 5 ? 'lager than five':'less than five';
+                    }                    
+
+
+
+
+
+                }
+        })
+    </script>
+</body>
+</html>

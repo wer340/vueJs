@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body >
+    <div id="app" v-on:mousemove="cordinate">
+<h1 v-once>{{ title }}</h1>
+<a v-bind:href="link">Google</a>
+<h2>{{sayHello()}}</h2>
+<p>{{entekhab}}</p>
+<p v-html="entekhab"> </p>
+<p><h1>{{counter}}</h1></p>
+<p><button v-on:click="up">click up</button></p>
+<p><button v-on:mouseover="down">click down</button></p>
+<p><button v-on:mouseover="step(3,$event)">click step </button><h3 >size step:{{stepr}}</h3></p>
+<h1>this is a Cordinate for moveming Mouse Client</h1>
+<p><h3 >this is {{x}} and is {{y}}</h3> <span v-on:mousemove="stopcordinate" style="background-color: yellow;">stopPropagation important:not work in block css </span></p>
+<p style="background-color: darkgreen;">
+    propagation is work
+</p>
+<p><span v-on:mousemove.stop="" style="background-color: burlywood;" >disable
+     function cordinate with Modifier . dot stop no work function and . dot prvent chain </span>
+this is a dummy text
+</p>
+    </div>
+
+    <script>
+        new Vue ({
+            el:'#app',
+            data:{
+                title:'helllo',
+                link:'http://www.google.com',
+                entekhab:'<a href="https://www.entekhab.ir/">entekhab </a>',
+                counter:0,
+                x:0,
+                y:0,
+                stepr:0,
+
+            },
+                methods:{
+                    sayHello:function(){
+                        this.title="HI HAs"
+                        return 'hi mrs fatmi'
+                         },
+                   up:function(){
+                            this.counter++;
+                        },
+                   down:function(){
+                         this.counter--;
+                        },
+                        step:function(step,event){
+                            this.stepr=event.clientX;
+                                this.counter +=step;
+                        },
+                    cordinate:function(event){
+                            this.x=event.clientX;
+                            this.y=event.clientY;
+                    },
+                    stopcordinate:function(event){
+                          event.stopPropagation()
+                            
+                    }
+
+                }
+
+        })
+    </script>
+</body>
+</html>
