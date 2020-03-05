@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body style="text-align: center; margin-top: 150px; background: rgba(10,33,25,.01); " >
+    
+    <div id="app1" >
+    <h1>{{title}}</h1> 
+
+
+    <button @click="show">click one</button>
+</div>
+    <div id="app2" >
+            <h1>{{title}}</h1> 
+<button @click="show" ref="mybut">click second</button>
+</div>
+
+    <script>
+       var vn1=new Vue ({
+            el:'#app1',
+            data:{
+                title:'this is a app one',
+                showParagraph:false,
+            },
+            methods:{
+                show:function(){
+                    this.showParagraph=true;
+                   
+                    this.updateTitle("this is a app one updated");
+                },
+                updateTitle:function(title){
+                    this.title=title
+                }
+            },
+            computed:{
+
+                
+                lowercaseTitle: function() {
+      return this.title.toLowerCase();
+    }
+            },
+            watch:{
+                title:function(vale){
+                    alert('thi is a new '+ vale)
+                }
+            }
+            
+        });
+        var vn2=new Vue ({
+            el:'#app2',
+            data:{
+                title:'this is a app second',
+                showParagraph:false,
+            },
+            methods:{
+                show:function(){
+                    this.showParagraph=true;
+                    this.updateTitle("this is a app second updated");
+                },
+                updateTitle:function(title){
+                    this.title=title
+                }
+            },
+            computed:{
+
+                lowercaseTitle: function() {
+      return this.title.toLowerCase();
+    }
+            },
+            watch:{
+                title:function(vale){
+                    alert('thi is a new '+ vale)
+                }
+            }
+            
+        });
+        vn1.newprpo="hd";
+        console.log(vn1);
+        vn2.$refs.mybut.innerText="f";
+        console.log(vn2.$refs);
+    </script>
+</body>
+</html>

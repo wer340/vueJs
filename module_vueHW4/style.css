@@ -1,0 +1,9 @@
+@font-face {
+    font-family: iransans;
+    src: url(font/IRANSansWeb_Medium.ttf);
+  }
+body{
+    font-family: iransans;
+    font-weight: bold;
+    text-shadow: 1px 1px #F7CA18;
+}
